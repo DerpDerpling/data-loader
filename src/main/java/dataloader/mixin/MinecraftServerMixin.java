@@ -4,6 +4,7 @@ import dataloader.DataLoader;
 import net.minecraft.resource.*;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.path.SymlinkFinder;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,8 +20,9 @@ public class MinecraftServerMixin {
 				new FileResourcePackProvider(
 						DataLoader.DATAPACKS_PATH,
 						ResourceType.SERVER_DATA,
-						DataLoader.RESOURCE_PACK_SOURCE
-				)
+						DataLoader.RESOURCE_PACK_SOURCE,
+                        (SymlinkFinder) DataLoader.LOGGER
+                )
 		);
 	}
 
